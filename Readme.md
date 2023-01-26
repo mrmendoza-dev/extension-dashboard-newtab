@@ -9,4 +9,4 @@ Chrome extension Quick Access toolbar to quickly go to most visited websites, bo
 - ChatGPT Prompt
 
 ### Resources
-- [Original repo](https://github.com/manshu/reactjs-chrome-extension)
+- [Original Repo](https://github.com/manshu/reactjs-chrome-extension)
