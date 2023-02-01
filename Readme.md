@@ -1,9 +1,12 @@
-# ReactJS Chrome Extension
+# Dashboard Extension
+Chrome extension Quick Access toolbar to quickly go to most visited websites, bookmarks, and helpful widgets.
 
-## React 18 and TailwindCSS Supported
+### Features
+- Note Saver
+- Weather
+- Crypto/Stock Tracker
+- Search Engine
+- ChatGPT Prompt
 
-- [x] Webpack Compatible
-- [x] TailwindCSS 3.0 Compatible
-
-Subscribe to my youtube channel
-https://bit.ly/manshu
+### Resources
+- [Original Repo](https://github.com/manshu/reactjs-chrome-extension)
