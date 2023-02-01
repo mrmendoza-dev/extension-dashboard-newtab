@@ -1,0 +1,20 @@
+
+.Clock {
+    /* top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0; */
+    line-height: 1.2;
+    opacity: .9;
+    text-align: center;
+}
+
+.Clock .main {
+    font-weight: 600;
+    font-size: 8rem;
+}
+.Clock .sub {
+    font-weight: 400;
+    font-size: 4rem;
+
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter as Router } from "react-router-dom";
-import Dashboard from "./dash";
+import Dashboard from "./newTab";
 import '../assets/tailwind.css'
 
 function init() {
