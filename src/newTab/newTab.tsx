@@ -6,6 +6,8 @@ import Searchbar from "./components/Searchbar/Searchbar";
 import Clock from "./components/Clock/Clock";
 import CryptoModule from "./components/CryptoModule/CryptoModule";
 import WeatherModule from "./components/WeatherModule/WeatherModule";
+import ToDoList from "./components/ToDoList/ToDoList";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 let words = ["neon", "cyber", "blue", "acid"];
 
@@ -51,6 +53,7 @@ function Dashboard() {
       className="Dashboard"
       style={{ backgroundImage: `url(${bgImageUrl})` }}
     >
+      <Sidebar></Sidebar>
       <div className="crypto-module module-frame">
         <CryptoModule />
       </div>
@@ -70,6 +73,9 @@ function Dashboard() {
         <Searchbar />
       </div>
       {/* <Timer className="timer-module module-frame"></Timer> */}
+      <div className="todo-module module-frame">
+        <ToDoList />
+      </div>
     </div>
   );
 }

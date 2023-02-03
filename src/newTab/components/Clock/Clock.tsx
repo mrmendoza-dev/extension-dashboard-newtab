@@ -26,9 +26,9 @@ function Clock(props: any) {
     minute: "numeric",
     hour12: true,
   });
-  const day = datetime.toLocaleString("en-US", { month: "long" });
+  const month = datetime.toLocaleString("en-US", { month: "long" });
   const weekday = datetime.toLocaleString("en-US", { weekday: "long" });
-  const month = datetime.toLocaleString("en-US", { day: "numeric" });
+  const day = datetime.toLocaleString("en-US", { day: "numeric" });
 
   return (
     <div className={props.className}>

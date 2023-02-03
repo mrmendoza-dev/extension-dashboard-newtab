@@ -84,6 +84,13 @@ html {
   bottom: 0;
 }
 
+.todo-module {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 .search-module {
 
 }

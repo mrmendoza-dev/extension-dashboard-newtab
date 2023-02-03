@@ -1,0 +1,116 @@
+#react-chrome-app {
+
+}
+
+.QuickAccess {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  /* padding: 1em 2em; */
+  font-size: 16px;
+  /* width: 300px; */
+  height: 100vh;
+  position: fixed;
+  /* right: 0; */
+  top: 0;
+  z-index: 999999999;
+  background-color: #000000e8;
+  color: rgb(255, 255, 255);
+  border-left: 1px solid #f7f7f7;
+  box-shadow: 0 0 25px #21212156;
+  transition: all 200ms;
+  margin: 0;
+  padding: 0;
+}
+
+.App-big {
+  width: 200px;
+      transition: width 200ms;
+          padding: 1em 1.6em;
+
+
+}
+.App-small {
+        width: 0px;
+
+        visibility: hidden;
+            transition: width 200ms;
+
+}
+
+
+
+.collapse-btn {
+    position: fixed;
+    /* right: 0; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #2557a7;
+    color: white;
+    border-radius: 10px 0 0 10px;
+    opacity: 0.75;
+    border: none;
+}
+.collapse-btn:hover {
+      background-color: #164081;
+
+}
+
+
+
+.QuickAccess a{
+  color: inherit;
+  text-decoration: none;
+}
+.QuickAccess a:hover {
+  color: inherit;
+}
+
+
+.qa-link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0em;
+}
+
+.qa-link-category {
+  transition: all 100ms;
+  border-radius: 10px;
+  padding: .2em .6em;
+}
+
+.qa-link-category:hover {
+  background-color: #0b2e62c5;
+}
+
+.qa-link-category p{
+  font-size: 1.2rem;
+  margin: .4em;
+}
+.qa-link {
+
+}
+.qa-link-list li {
+  list-style-type: none;
+ 
+}
