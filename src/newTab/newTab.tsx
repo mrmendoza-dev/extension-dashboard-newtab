@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./newTab.css";
 import { Link } from "react-router-dom";
@@ -8,6 +8,9 @@ import CryptoModule from "./components/CryptoModule/CryptoModule";
 import WeatherModule from "./components/WeatherModule/WeatherModule";
 import ToDoList from "./components/ToDoList/ToDoList";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Notes from "./components/Notes/Notes";
+import NewsModule from "./components/NewsModule/NewsModule";
+// import AnalogClock from "./components/AnalogClock/AnalogClock";
 
 let words = ["neon", "cyber", "blue", "acid"];
 
@@ -49,10 +52,12 @@ function Dashboard() {
   }
 
   return (
-    <div
-      className="Dashboard"
-      style={{ backgroundImage: `url(${bgImageUrl})` }}
-    >
+    <div className="Dashboard">
+      <div
+        className="bg"
+        style={{ backgroundImage: `url(${bgImageUrl})` }}
+      ></div>
+
       <Sidebar></Sidebar>
       <div className="crypto-module module-frame">
         <CryptoModule />
@@ -73,11 +78,84 @@ function Dashboard() {
         <Searchbar />
       </div>
       {/* <Timer className="timer-module module-frame"></Timer> */}
+
       <div className="todo-module module-frame">
         <ToDoList />
+      </div>
+
+      {/* <div className="news-module module-frame">
+        <NewsModule />
+      </div> */}
+
+      <div className="notes-module module-frame">
+        <Notes />
       </div>
     </div>
   );
 }
 
 export default Dashboard;
+
+
+
+
+
+
+
+function ToggleButton(props: any) {
+  const [isToggled, setToggled] = useState(false);
+  function handleClick() {
+    setToggled(!isToggled);
+    props.setValue(!isToggled);
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      style={{ backgroundColor: isToggled ? "green" : "red" }}
+    >
+      {isToggled ? "ON" : "OFF"}
+    </button>
+  );
+}
+
+function EditableText(props: any) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [text, setText] = useState(props.text);
+  const inputRef: any = useRef(null);
+
+  useEffect(() => {
+    if (isEditing) {
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
+
+  function startEditing() {
+    setIsEditing(true);
+  }
+
+  function stopEditing() {
+    setIsEditing(false);
+  }
+
+  function handleChange(event: any) {
+    setText(event.target.value);
+    props.setValue(event.target.value);
+  }
+
+  if (isEditing) {
+    return (
+      <div className={props.className}>
+        <input
+          type="text"
+          ref={inputRef}
+          value={text}
+          onChange={handleChange}
+          onBlur={stopEditing}
+        />
+      </div>
+    );
+  } else {
+    return <span onClick={startEditing}>{text}</span>;
+  }
+}

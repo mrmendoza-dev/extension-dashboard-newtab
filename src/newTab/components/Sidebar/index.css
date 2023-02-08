@@ -33,7 +33,6 @@
   z-index: 999999999;
   background-color: #000000e8;
   color: rgb(255, 255, 255);
-  border-left: 1px solid #f7f7f7;
   box-shadow: 0 0 25px #21212156;
   transition: all 200ms;
   margin: 0;
@@ -65,14 +64,14 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background-color: #2557a7;
+    background-color: #7A2A76;
     color: white;
     border-radius: 10px 0 0 10px;
     opacity: 0.75;
     border: none;
 }
 .collapse-btn:hover {
-      background-color: #164081;
+      background-color: #62235f;
 
 }
 
@@ -81,6 +80,7 @@
 .QuickAccess a{
   color: inherit;
   text-decoration: none;
+  
 }
 .QuickAccess a:hover {
   color: inherit;

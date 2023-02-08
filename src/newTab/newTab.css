@@ -8,6 +8,42 @@ html {
   background-color: black;
 }
 
+.Dashboard {
+  margin: 0;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  padding: 15px;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+ .Dashboard .bg {
+  background: no-repeat center center fixed;
+
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  z-index: -1;
+  filter: blur(3px) brightness(95%);
+    object-fit: contain;
+      height: 100vh;
+
+  width: 100vw;
+
+  /* background-image: url("../../assets/sunset.jpg"); */
+}
+
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -49,6 +85,9 @@ html {
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: 10px;
   transition: all 200ms;
+  /* padding: 1em; */
+    /* position: relative; */
+
 }
 .module-frame:hover {
   box-shadow: 0 0 10px #00ffff1a, 0 0 20px #00ffff1a, 0 0 30px #00ffff1a,
@@ -57,6 +96,15 @@ html {
 }
 
 .center-frame {
+}
+.btn-min {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  background-color: yellow;
+  width: 10px;
+  height: 10px;
 }
 
 .module-frame {
@@ -105,31 +153,6 @@ html {
   src: url("../assets/fonts/OpenSans-Regular.ttf") format("truetype");
 }
 
-.Dashboard {
-  margin: 0;
-  background: no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-color: black;
-  color: white;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-
-  /* font-family: "Open Sans",sans-serif, Arial, Helvetica, sans-serif; */
-  /* text-shadow: 0px 0px 20px #242424; */
-
-  padding: 15px;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  object-fit: contain;
-}
-
 .blur::before {
   content: "";
   position: absolute;
@@ -170,3 +193,20 @@ html {
   flex-direction: column;
   gap: 1em;
 }
+
+
+
+.news-module {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.notes-module {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* width: 200px; */
+}
+
+

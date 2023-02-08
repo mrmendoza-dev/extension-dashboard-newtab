@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
 
 const WeatherModule = () => {
-         const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
 
   function updateWeather() {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -17,6 +17,7 @@ const WeatherModule = () => {
         })
         .then((data) => {
           setWeatherData(data);
+          console.log(data)
         })
         .catch((err) => console.error(err));
     });
@@ -36,6 +37,10 @@ const WeatherModule = () => {
           />
           <p className="weather-temp">{Math.round(weatherData.main.temp)}º</p>
           <p className="weather-city">{weatherData.name}</p>
+          <p className="weather-city">{weatherData.weather[0].main}</p>
+          <p className="weather-city">
+            High: {weatherData.main.temp_max.toFixed(0)}, Low: {weatherData.main.temp_min.toFixed(0)}
+          </p>
         </>
       )}
     </div>
