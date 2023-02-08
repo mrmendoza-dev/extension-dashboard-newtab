@@ -22,5 +22,5 @@ Chrome extension Quick Access toolbar to quickly go to most visited websites, bo
 - Cloud Resources and Other Apps
 
 ### Resources
-- [Original Repo](https://github.com/manshu/reactjs-chrome-extension)
-
+- [Quick Access Repo](https://github.com/mrmendoza171/extension-quick-access)
+- [Original New Tab Repo](https://github.com/manshu/reactjs-chrome-extension)
