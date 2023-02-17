@@ -31,14 +31,11 @@
   z-index: 999999999;
   background-color: #000000e8;
   color: rgb(255, 255, 255);
+  border-left: 1px solid #f7f7f7;
   box-shadow: 0 0 25px #21212156;
   transition: all 200ms;
   margin: 0;
   padding: 0;
-}
-
-.Sidebar {
-  transition: width 200ms;
 }
 
 
@@ -50,14 +47,14 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
-  background-color: #7a2a76;
+  background-color: #2557a7;
   color: white;
   border-radius: 10px 0 0 10px;
   opacity: 0.75;
   border: none;
 }
 .collapse-btn:hover {
-  background-color: #62235f;
+  background-color: #164081;
 }
 
 .QuickAccess a {
@@ -89,10 +86,6 @@
   margin: 0.4em;
 }
 .qa-link {
-  transition: all 200ms;
-}
-.qa-link:hover {
-  color: #00ffff !important;
 }
 .qa-link-list li {
   list-style-type: none;

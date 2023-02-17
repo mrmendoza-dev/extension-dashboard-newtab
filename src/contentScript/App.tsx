@@ -1,8 +1,7 @@
+import "./App.css"
 import React, { useState, useEffect, useRef } from "react";
 import Draggable from "react-draggable";
-import "./index.css";
 
-// { url: "", name: "ChatGPT" },
 
 let links = [
   {
@@ -46,89 +45,50 @@ let links = [
     name: "FontAwesome",
     category: "UI/UX",
   },
-  {
-    url: "https://analytics.google.com/analytics/",
-    name: "Google Analytics",
-    category: "Cloud",
-  },
-  {
-    url: "https://www.midjourney.com/app/",
-    name: "Midjourney",
-    category: "AI/ML",
-  },
-  {
-    url: "https://docs.google.com/spreadsheets/d/1jCt0tPnJ-mO0UfLvpEO8FjjcpjOvJiEgXUnflvyAxZI/edit#gid=0",
-    name: "Music List",
-    category: "Notes",
-  },
-  {
-    url: "https://docs.google.com/spreadsheets/d/1KGWj0qBFWGUTXGfjNYr1W7nZ5U45DUGAQcrmXFli5PQ/edit#gid=0",
-    name: "Goal Accountability",
-    category: "Notes",
-  },
-  {
-    url: "https://docs.google.com/document/d/1nXAkzlyMHMzeuydhss09L-q9DnemFHwAB9fzqEW1X28/edit",
-    name: "Cool Lyrics",
-    category: "Notes",
-  },
 ];
 
+ let categories = ["Personal", "Social", "Career", "Coding", "Cloud", "UI/UX", "AI/ML", "Notes"];
 
 
 
- let categories = [
-  "Personal",
-  "Social",
-  "Career",
-  "Coding",
-  "Cloud",
-  "UI/UX",
-  "AI/ML",
-  "Notes",
-];
+function App() {
 
-function Sidebar() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  // const [position, setPosition] = useState(
-  //   JSON.parse(localStorage.getItem("position") || "{ x: 0, y: 0 }")
-  // );
+          const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  // useEffect(() => {
-  //   if (position.y > 0) {
-  //   localStorage.setItem("position", JSON.stringify(position));
+        // const [position, setPosition] = useState(
+        //   JSON.parse(localStorage.getItem("position") || "{ x: 0, y: 0 }")
+        // );
 
-  //   }
-  // }, [position]);
+            // useEffect(() => {
+            //   if (position.y > 0) {
+            //   localStorage.setItem("position", JSON.stringify(position));
 
-  const [isToggled, setIsToggled] = useState(
-    JSON.parse(localStorage.getItem("sidebarOpen") || "false")
-  );
-  const handleClick = () => {
-    setIsToggled(!isToggled);
-  };
-  const handleHover = () => {
-    if (!isToggled) {
-      setIsToggled(true);
-    }
-  };
-    const handleLeave = () => {
-      setIsToggled(false);
-      console.log("leave");
+            //   }
+            // }, [position]);
+
+
+console.log("test");
+
+    const [isToggled, setIsToggled] = useState(JSON.parse(localStorage.getItem("sidebarOpen") || "false"));
+    const handleClick = () => {
+      setIsToggled(!isToggled);
+    };
+    const handleHover = () => {
+      if (!isToggled) {
+        setIsToggled(true);
+      }
     };
 
-  useEffect(() => {
-    localStorage.setItem("sidebarOpen", JSON.stringify(isToggled));
-  }, [isToggled]);
+      useEffect(() => {
+        localStorage.setItem("sidebarOpen", JSON.stringify(isToggled));
+      }, [isToggled]);
+
 
 
 
   return (
-    <div
-      className="QuickAccess"
-      style={{ right: 0 }}
-      onMouseLeave={handleLeave}
-    >
+    <div className="QuickAccess" style={{ right: 0 }}>
       <Draggable
         axis="y"
         position={position}
@@ -144,9 +104,7 @@ function Sidebar() {
         {/* </div> */}
       </Draggable>
 
-      <div id="my-element" 
-      className="Sidebar" 
-      style={{width: isToggled ? "200px" : "0px"}} >
+      <div id="my-element" className={isToggled ? "App-big" : "App-small"}>
         <header>
           <p className="">Quick Access</p>
         </header>
@@ -182,4 +140,7 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default App;
+
+
+

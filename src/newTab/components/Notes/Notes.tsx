@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icons } from "../../../assets/icons";
+
 let dummyData = [
   {
     id: 1675411290144,
@@ -92,6 +95,12 @@ function Notes() {
     setNotes(newList);
   };
 
+  const inputRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    inputRef.current.focus();
+  };
+
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
@@ -101,10 +110,10 @@ function Notes() {
       <div className="control-panel">
         <div className="btn-tray">
           <button className="btn-add" onClick={addNote}>
-            <i className="fa-solid fa-plus"></i>
+            <FontAwesomeIcon title="Add" icon={icons.faPlus} />
           </button>
           <button className="btn-add" onClick={addNote}>
-            <i className="fa-solid fa-filter"></i>
+            <FontAwesomeIcon title="Filter" icon={icons.faFilter} />
           </button>
         </div>
         <ul className="note-list">
@@ -124,7 +133,10 @@ function Notes() {
           ))}
         </ul>
       </div>
-      <div className="editor-panel">
+      <div
+        className="editor-panel"
+        style={{ width: selectedNote !== null ? "400px" : "0px" }}
+      >
         {selectedNote !== null && (
           <div>
             <div className="editor-main">
@@ -133,9 +145,16 @@ function Notes() {
                 onClick={() => handleFavorite(notes[selectedNote].id)}
               >
                 {notes[selectedNote].favorite ? (
-                  <i className="fa-solid fa-star favorite"></i>
+                  <FontAwesomeIcon
+                    title="Favorite"
+                    icon={icons.faStarFilled}
+                    className="favorite"
+                  />
                 ) : (
-                  <i className="fa-regular fa-star"></i>
+                  <FontAwesomeIcon
+                    title="Unfavorite"
+                    icon={icons.faStarEmpty}
+                  />
                 )}
               </button>
 
@@ -153,7 +172,7 @@ function Notes() {
                   deleteNote(notes[selectedNote]);
                 }}
               >
-                <i className="fa-solid fa-trash"></i>
+                <FontAwesomeIcon title="Delete" icon={icons.faTrash} />
               </button>
             </div>
 
@@ -163,6 +182,8 @@ function Notes() {
               className="note-text"
               value={notes[selectedNote].text}
               onChange={(e) => updateSelectedNote(e, selectedNote)}
+              ref={inputRef}
+              onMouseEnter={handleMouseEnter}
             />
           </div>
         )}

@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icons } from "../../../assets/icons";
+
 const Searchbar = () => {
   // Replace %s with query
   const searchEngines = [
@@ -66,11 +69,11 @@ const Searchbar = () => {
   const initialOption = storedOption ? JSON.parse(storedOption) : defaultOption;
   const [selectedOption, setSelectedOption] = useState(initialOption);
 
-    const inputRef = useRef(null);
+  const inputRef = useRef(null);
 
-    const handleMouseEnter = () => {
-      inputRef.current.focus();
-    };
+  const handleMouseEnter = () => {
+    inputRef.current.focus();
+  };
 
   useEffect(() => {
     inputRef.current.focus();
@@ -87,8 +90,6 @@ const Searchbar = () => {
   }, [selectedOption]);
 
   const [inputValue, setInputValue] = useState("");
-
-
 
   const handleChange = (e: any) => {
     if (e.target.name === "option") {
@@ -130,12 +131,16 @@ const Searchbar = () => {
         <input
           type="text"
           value={inputValue}
-          ref={inputRef}
           onChange={handleChange}
+          ref={inputRef}
           onMouseEnter={handleMouseEnter}
         />
         <button onClick={handleSubmit}>
-          <i className="fa-solid fa-magnifying-glass"></i>
+          <FontAwesomeIcon
+            title="Search"
+            icon={icons.faMagnifyingGlass}
+            className="icon-search"
+          />
         </button>
       </form>
     </div>

@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icons } from "../../../assets/icons";
+
+
+
 let dummyData = [
   { id: 1675411290144, text: "Wash car", favorite: false },
   { id: 1675411292758, text: "Pay bills", favorite: true },
@@ -18,6 +23,11 @@ function ToDoList() {
   );
   const [text, setText] = useState("");
   const inputRef: any = useRef(null);
+
+  
+      const handleMouseEnter = () => {
+        inputRef.current.focus();
+      };
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -89,9 +99,10 @@ function ToDoList() {
           value={text}
           onChange={(e) => setText(e.target.value)}
           ref={inputRef}
+          onMouseEnter={handleMouseEnter}
         />
         <button className="btn-row" onClick={handleAdd}>
-          <i className="fa-solid fa-plus"></i>
+          <FontAwesomeIcon title="Add" icon={icons.faPlus} />
         </button>
       </div>
       <ul className="todo-list">
@@ -109,9 +120,13 @@ function ToDoList() {
               onClick={() => handleFavorite(todo.id)}
             >
               {todo.favorite ? (
-                <i className="fa-solid fa-star favorite"></i>
+                <FontAwesomeIcon
+                  title="Favorite"
+                  icon={icons.faStarFilled}
+                  className="favorite"
+                />
               ) : (
-                <i className="fa-regular fa-star"></i>
+                <FontAwesomeIcon title="Unfavorite" icon={icons.faStarEmpty} />
               )}
             </span>
             <input
@@ -120,19 +135,12 @@ function ToDoList() {
               onChange={(e) => handleEdit(todo.id, e.target.value)}
             />
 
-            {/* <button
-              className="btn-row btn-edit"
-              onClick={() => handleDelete(todo.id)}
-            >
-              <i className="fa-solid fa-pen-to-square"></i>
-            </button> */}
             <button
               className="btn-row btn-trash"
               onClick={() => handleDelete(todo.id)}
             >
-              <i className="fa-solid fa-trash"></i>
+              <FontAwesomeIcon title="Delete" icon={icons.faTrash} />
             </button>
-
           </li>
         ))}
       </ul>
