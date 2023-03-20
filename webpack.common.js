@@ -1,9 +1,9 @@
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const HtmlPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const tailwindcss = require('tailwindcss')
-const autoprefixer = require('autoprefixer')
+const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
+const HtmlPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const tailwindcss = require("tailwindcss");
+const autoprefixer = require("autoprefixer");
 
 module.exports = {
   entry: {
@@ -19,6 +19,10 @@ module.exports = {
         use: "ts-loader",
         test: /\.tsx?$/,
         exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.css$/i,
@@ -76,9 +80,12 @@ module.exports = {
 };
 
 function getHtmlPlugins(chunks) {
-    return chunks.map(chunk => new HtmlPlugin({
-        title: 'Dashboard',
+  return chunks.map(
+    (chunk) =>
+      new HtmlPlugin({
+        title: "Dashboard",
         filename: `${chunk}.html`,
-        chunks: [chunk]
-    }))
+        chunks: [chunk],
+      })
+  );
 }

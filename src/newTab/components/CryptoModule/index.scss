@@ -8,6 +8,7 @@
   align-items: flex-start;
   gap: 0.2em;
   height: 400px;
+  overflow-y: scroll;
 }
 
 .crypto-row {
@@ -17,3 +18,11 @@
   width: 30px;
   aspect-ratio: 1;
 }
+
+.crypto-price {
+  display: flex;
+  gap: .2em;
+  align-items: center;
+}
+
+

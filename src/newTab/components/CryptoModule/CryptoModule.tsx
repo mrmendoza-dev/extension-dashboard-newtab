@@ -1,18 +1,14 @@
-
-
-
-import React, { useState, useEffect, useRef } from "react";
-import "./index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { icons } from "../../../assets/icons";
+import "./index.scss";
 
 const CryptoModule = () => {
-     const [cryptoData, setCryptoData] = useState(null);
+  const [cryptoData, setCryptoData] = useState(null);
 
-
-     
   function updateCrypto() {
     const API_URL = "https://api.coingecko.com/api/v3";
 
-    
     let cryptos = ["bitcoin", "ethereum", "cardano"];
     let url = `${API_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1`;
     fetch(url)
@@ -28,12 +24,9 @@ const CryptoModule = () => {
       .catch((err) => console.error(err));
   }
 
-
-        useEffect(() => {
-          updateCrypto();
-        }, []);
- 
-
+  useEffect(() => {
+    updateCrypto();
+  }, []);
 
   return (
     <div className="CryptoModule">
@@ -54,7 +47,35 @@ const CryptoModule = () => {
                     <p className="crypto-name">{crypto.name}</p>
                   </a>
 
-                  <p>${crypto.current_price}</p>
+                  <p>${crypto.current_price.toLocaleString()}</p>
+
+                  <div
+                    className="crypto-price"
+                    style={{
+                      color:
+                        crypto.market_cap_change_percentage_24h > 0
+                          ? "limegreen"
+                          : "red",
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      title="Add"
+                      icon={
+                        crypto.market_cap_change_percentage_24h > 0
+                          ? icons.faCaretUp
+                          : icons.faCaretDown
+                      }
+                    />
+                    <p>
+                      {Math.abs(
+                        crypto.market_cap_change_percentage_24h.toLocaleString(
+                          undefined,
+                          { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+                        )
+                      )}
+                      %
+                    </p>
+                  </div>
                 </div>
               );
             })}
@@ -66,4 +87,3 @@ const CryptoModule = () => {
 };
 
 export default CryptoModule;
-

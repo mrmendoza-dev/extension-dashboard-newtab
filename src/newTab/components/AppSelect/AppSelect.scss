@@ -1,0 +1,33 @@
+
+
+
+
+.AppSelect {
+    /* position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0; */
+    height: fit-content;
+    padding: 1em;
+    
+}
+.app-list {
+
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+
+.app-module {
+
+}
+.app-icon {
+    font-size: 3rem;
+    transition: all 200ms;
+    cursor: pointer;
+}
+.app-icon:hover {
+    color: var(--accent);
+    transform: scale(1.4);
+}

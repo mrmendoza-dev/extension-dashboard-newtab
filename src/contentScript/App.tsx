@@ -1,7 +1,6 @@
-import "./App.css"
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
-
+import "./App.scss";
 
 let links = [
   {
@@ -47,45 +46,48 @@ let links = [
   },
 ];
 
- let categories = ["Personal", "Social", "Career", "Coding", "Cloud", "UI/UX", "AI/ML", "Notes"];
-
-
+let categories = [
+  "Personal",
+  "Social",
+  "Career",
+  "Coding",
+  "Cloud",
+  "UI/UX",
+  "AI/ML",
+  "Notes",
+];
 
 function App() {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
+  // const [position, setPosition] = useState(
+  //   JSON.parse(localStorage.getItem("position") || "{ x: 0, y: 0 }")
+  // );
 
-          const [position, setPosition] = useState({ x: 0, y: 0 });
+  // useEffect(() => {
+  //   if (position.y > 0) {
+  //   localStorage.setItem("position", JSON.stringify(position));
 
-        // const [position, setPosition] = useState(
-        //   JSON.parse(localStorage.getItem("position") || "{ x: 0, y: 0 }")
-        // );
+  //   }
+  // }, [position]);
 
-            // useEffect(() => {
-            //   if (position.y > 0) {
-            //   localStorage.setItem("position", JSON.stringify(position));
+  console.log("test");
 
-            //   }
-            // }, [position]);
+  const [isToggled, setIsToggled] = useState(
+    JSON.parse(localStorage.getItem("sidebarOpen") || "false")
+  );
+  const handleClick = () => {
+    setIsToggled(!isToggled);
+  };
+  const handleHover = () => {
+    if (!isToggled) {
+      setIsToggled(true);
+    }
+  };
 
-
-console.log("test");
-
-    const [isToggled, setIsToggled] = useState(JSON.parse(localStorage.getItem("sidebarOpen") || "false"));
-    const handleClick = () => {
-      setIsToggled(!isToggled);
-    };
-    const handleHover = () => {
-      if (!isToggled) {
-        setIsToggled(true);
-      }
-    };
-
-      useEffect(() => {
-        localStorage.setItem("sidebarOpen", JSON.stringify(isToggled));
-      }, [isToggled]);
-
-
-
+  useEffect(() => {
+    localStorage.setItem("sidebarOpen", JSON.stringify(isToggled));
+  }, [isToggled]);
 
   return (
     <div className="QuickAccess" style={{ right: 0 }}>
@@ -141,6 +143,3 @@ console.log("test");
 }
 
 export default App;
-
-
-

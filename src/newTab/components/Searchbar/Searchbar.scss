@@ -1,0 +1,71 @@
+.Searchbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Searchbar form {
+  min-width: 300px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.Searchbar * {
+  height: 100%;
+}
+
+.Searchbar select:focus,
+.Searchbar:focus select,
+.Searchbar:focus select {
+  outline: none;
+}
+
+.Searchbar select {
+  background-color: var(--clr-transparent);
+  border: none;
+  text-align: center;
+  border-right: 1px solid rgba(100, 100, 100, 0.5);
+  cursor: pointer;
+}
+
+.Searchbar .select-engine {
+  border-radius: 10px 0px 0px 10px;
+}
+.Searchbar .select-mode {
+  padding: 0 0.6em;
+}
+
+.Searchbar input {
+  flex-basis: 80%;
+  background-color: var(--clr-transparent);
+  outline: none;
+  border: none;
+  padding: 0 1em;
+}
+.Searchbar button {
+  border-radius: 0 10px 10px 0;
+  background-color: var(--clr-transparent);
+  border: none;
+  border-left: 1px solid rgba(100, 100, 100, 0.5);
+  padding: 0.6em 1.6em;
+  font-weight: 500;
+  font-family: inherit;
+  font-size: 0.4rem;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.Searchbar button * {
+  height: 20px;
+}
+
+.Searchbar button:hover {
+  background-color: #535bf2;
+}
+
+.Searchbar select:hover {
+  background-color: #535bf2;
+}

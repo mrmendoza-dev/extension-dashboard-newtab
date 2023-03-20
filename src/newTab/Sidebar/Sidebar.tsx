@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
-import "./index.css";
+import "./index.scss";
 
 // { url: "", name: "ChatGPT" },
 
@@ -9,23 +9,38 @@ let links = [
     url: "https://app.netlify.com/teams/mrmendoza171/overview",
     name: "Netlify",
     category: "Cloud",
+    image: "https://skillicons.dev/icons?i=netlify&theme=dark",
+  },
+  {
+    url: "https://twitter.com/home",
+    name: "Twitter",
+    category: "Social",
+    image: "https://skillicons.dev/icons?i=twitter&theme=dark",
   },
   {
     url: "https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fs3.console.aws.amazon.com%2Fs3%2Fbuckets%3Fregion%3Dus-west-2%26state%3DhashArgs%2523%26isauthcode%3Dtrue&client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fs3&forceMobileApp=0&code_challenge=gyhIPtIpITucXk794DCBdjuw3gqVPtxX0Aby0TGEoRI&code_challenge_method=SHA-256",
     name: "Amazon S3",
     category: "Cloud",
+    image: "https://skillicons.dev/icons?i=aws&theme=dark",
   },
   {
     url: "https://www.linkedin.com/in/mrmendoza171/",
     name: "LinkedIn",
     category: "Career",
+    image: "https://skillicons.dev/icons?i=linkedin&theme=dark",
   },
   {
     url: "https://github.com/mrmendoza171",
     name: "GitHub",
     category: "Coding",
+    image: "https://skillicons.dev/icons?i=github&theme=dark",
   },
-  { url: "https://id.heroku.com/login", name: "Heroku", category: "Cloud" },
+  {
+    url: "https://id.heroku.com/login",
+    name: "Heroku",
+    category: "Cloud",
+    image: "https://skillicons.dev/icons?i=heroku&theme=dark",
+  },
 
   {
     url: "https://stevenmendoza.me/",
@@ -71,12 +86,15 @@ let links = [
     name: "Cool Lyrics",
     category: "Notes",
   },
+  {
+    url: "https://codepen.io/",
+    name: "Codepen",
+    category: "Coding",
+    image: "https://skillicons.dev/icons?i=codepen&theme=dark",
+  },
 ];
 
-
-
-
- let categories = [
+let categories = [
   "Personal",
   "Social",
   "Career",
@@ -85,6 +103,7 @@ let links = [
   "UI/UX",
   "AI/ML",
   "Notes",
+  "Other",
 ];
 
 function Sidebar() {
@@ -112,16 +131,14 @@ function Sidebar() {
       setIsToggled(true);
     }
   };
-    const handleLeave = () => {
-      setIsToggled(false);
-      console.log("leave");
-    };
+  const handleLeave = () => {
+    setIsToggled(false);
+    console.log("leave");
+  };
 
   useEffect(() => {
     localStorage.setItem("sidebarOpen", JSON.stringify(isToggled));
   }, [isToggled]);
-
-
 
   return (
     <div
@@ -144,12 +161,15 @@ function Sidebar() {
         {/* </div> */}
       </Draggable>
 
-      <div id="my-element" 
-      className="Sidebar" 
-      style={{width: isToggled ? "200px" : "0px"}} >
+      <div
+        id="my-element"
+        className="Sidebar"
+        style={{ width: isToggled ? "400px" : "0px" }}
+      >
         <header>
           <p className="">Quick Access</p>
         </header>
+
         <div className="qa-link-list">
           {categories.map((category) => (
             <div className="qa-link-category" key={category}>
@@ -159,27 +179,82 @@ function Sidebar() {
                   .filter((link) => link.category === category)
                   .map((link) => (
                     <li key={link.name}>
-                      <a className="qa-link" href={link.url} target="_blank">
-                        {link.name}
-                      </a>
+                      {link.image ? (
+                        <a className="qa-link" href={link.url} target="_blank">
+                          <img src={link.image} />
+                        </a>
+                      ) : (
+                        <a className="qa-link" href={link.url} target="_blank">
+                          {link.name}
+                        </a>
+                      )}
                     </li>
                   ))}
               </ul>
             </div>
           ))}
-
-          {/* {links.map((item) => {
-            return (
-              <a className="" href={item.url} target="_blank">
-                {item.name}
-              </a>
-            ); */}
-
-          {/* })} */}
         </div>
+
+        <Localhost />
       </div>
     </div>
   );
 }
 
 export default Sidebar;
+
+function Localhost() {
+  const [port, setPort] = useState(localStorage.getItem("port") || "5175");
+
+  const handlePortChange = (e) => {
+    const newPort = e.target.value;
+    setPort(newPort);
+    localStorage.setItem("port", newPort);
+  };
+
+  const handlePortButtonClick = (newPort) => {
+    setPort(newPort);
+    localStorage.setItem("port", newPort);
+  };
+
+  const popularPorts = [
+    { label: "Default", value: "5173" },
+    { label: "3000", value: "3000" },
+    { label: "4000", value: "4000" },
+    { label: "5000", value: "5000" },
+    { label: "5173", value: "5173" },
+    { label: "8000", value: "8000" },
+    { label: "8080", value: "8080" },
+  ];
+
+  return (
+    <div className="Localhost">
+      <div className="ports">
+        <div className="port-input">
+          <a href={`http://127.0.0.1:${port}`}>localhost</a>
+          <label htmlFor="port-select">Port:</label>
+          <input
+            id="port-select"
+            type="number"
+            min="1"
+            max="65535"
+            value={port}
+            onChange={handlePortChange}
+          />
+        </div>
+
+        <div className="port-btns">
+          {popularPorts.map((p) => (
+            <button
+              key={p.value}
+              onClick={() => handlePortButtonClick(p.value)}
+              className="btn-port"
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

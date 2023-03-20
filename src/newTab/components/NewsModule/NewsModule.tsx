@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./index.css";
 import axios from "axios";
-
+import React, { useEffect, useState } from "react";
+import "./index.scss";
 
 function NewsModule() {
   const [news, setNews] = useState([]);
@@ -9,7 +8,6 @@ function NewsModule() {
 
   useEffect(() => {
     const fetchData = async () => {
-
       let url = `https://api.newscatcherapi.com/v2/latest_headlines?1=8sgXdeO9gduPcaYqHetySnyU80EeTSqt1kuakCrMmi8`;
       const result = await axios.get(url, {
         headers: {

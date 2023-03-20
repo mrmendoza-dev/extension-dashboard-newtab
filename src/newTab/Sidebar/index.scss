@@ -97,3 +97,27 @@
 .qa-link-list li {
   list-style-type: none;
 }
+
+
+.Localhost {
+  overflow: hidden;
+}
+
+.ports {
+
+}
+.port-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.port-btns {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.btn-port {
+  padding: .2em 1em;
+  border: #00ffff;
+}

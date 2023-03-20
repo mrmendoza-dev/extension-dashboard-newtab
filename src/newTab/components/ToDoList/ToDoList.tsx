@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./index.css";
+import React, { useEffect, useRef, useState } from "react";
+import "./index.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icons } from "../../../assets/icons";
-
-
 
 let dummyData = [
   { id: 1675411290144, text: "Wash car", favorite: false },
@@ -24,10 +22,9 @@ function ToDoList() {
   const [text, setText] = useState("");
   const inputRef: any = useRef(null);
 
-  
-      const handleMouseEnter = () => {
-        inputRef.current.focus();
-      };
+  const handleMouseEnter = () => {
+    inputRef.current.focus();
+  };
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -74,22 +71,21 @@ function ToDoList() {
     );
   };
 
-    const onDragStart = (e: any, index: number) => {
-      e.dataTransfer.setData("index", index);
-    };
+  const onDragStart = (e: any, index: number) => {
+    e.dataTransfer.setData("index", index);
+  };
 
-    const onDragOver = (e: any) => {
-      e.preventDefault();
-    };
+  const onDragOver = (e: any) => {
+    e.preventDefault();
+  };
 
-    const onDrop = (e: any, targetIndex: number) => {
-      const sourceIndex = e.dataTransfer.getData("index");
-      const newList = [...todos];
-      const [removed] = newList.splice(sourceIndex, 1);
-      newList.splice(targetIndex, 0, removed);
-      setTodos(newList);
-    };
-
+  const onDrop = (e: any, targetIndex: number) => {
+    const sourceIndex = e.dataTransfer.getData("index");
+    const newList = [...todos];
+    const [removed] = newList.splice(sourceIndex, 1);
+    newList.splice(targetIndex, 0, removed);
+    setTodos(newList);
+  };
 
   return (
     <form className="ToDoList" onSubmit={handleAdd}>

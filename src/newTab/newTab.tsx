@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Routes, Route } from "react-router-dom";
-import "./newTab.css";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import Searchbar from "./components/Searchbar/Searchbar";
+import Sidebar from "./Sidebar/Sidebar";
 import Clock from "./components/Clock/Clock";
 import CryptoModule from "./components/CryptoModule/CryptoModule";
-import WeatherModule from "./components/WeatherModule/WeatherModule";
-import ToDoList from "./components/ToDoList/ToDoList";
-import Sidebar from "./components/Sidebar/Sidebar";
 import Notes from "./components/Notes/Notes";
-import NewsModule from "./components/NewsModule/NewsModule";
+import ToDoList from "./components/ToDoList/ToDoList";
+import WeatherModule from "./components/WeatherModule/WeatherModule";
+import AppSelect from "./components/AppSelect/AppSelect";
+
+import "./newTab.scss";
 // import AnalogClock from "./components/AnalogClock/AnalogClock";
 
 let words = ["neon", "cyber", "blue", "acid"];
@@ -90,17 +89,14 @@ function Dashboard() {
       <div className="notes-module module-frame">
         <Notes />
       </div>
+      <div className="app-select-module module-frame">
+        <AppSelect />
+      </div>
     </div>
   );
 }
 
 export default Dashboard;
-
-
-
-
-
-
 
 function ToggleButton(props: any) {
   const [isToggled, setToggled] = useState(false);
