@@ -7,7 +7,7 @@ import Notes from "./components/Notes/Notes";
 import ToDoList from "./components/ToDoList/ToDoList";
 import WeatherModule from "./components/WeatherModule/WeatherModule";
 import AppSelect from "./components/AppSelect/AppSelect";
-
+import Wikipedia from "./components/Wikipedia/Wikipedia";
 import "./newTab.scss";
 // import AnalogClock from "./components/AnalogClock/AnalogClock";
 
@@ -75,6 +75,27 @@ function Dashboard() {
       <div className="center-frame">
         <Clock className="clock-module module-frame" />
         <Searchbar />
+
+        <div className="module-frame bookmarks">
+          <a
+            className="link"
+            href="https://chat.openai.com/chat?model=gpt-3.5"
+            target="_blank"
+          >
+            ChatGPT 3.5
+          </a>
+          <a
+            className="link"
+            href="https://chat.openai.com/chat?model=gpt-4"
+            target="_blank"
+          >
+            ChatGPT 4
+          </a>
+        </div>
+
+        <div className="module-frame">
+          <Wikipedia />
+        </div>
       </div>
       {/* <Timer className="timer-module module-frame"></Timer> */}
 

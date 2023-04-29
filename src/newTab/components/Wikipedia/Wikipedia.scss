@@ -1,0 +1,32 @@
+
+
+
+
+.Wikipedia {
+    position: relative;
+    width: 600px;
+    max-height: 400px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1em 2em;
+    
+}
+.Wikipedia .title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+.Wikipedia .description {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+  overflow-y: auto; /* enable vertical scrolling when content exceeds maximum height */
+}
+
+.Wikipedia .btn-refresh {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.8rem;
+}
